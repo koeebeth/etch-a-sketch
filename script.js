@@ -1,11 +1,37 @@
-const penColor = document.querySelector('input.color');
 const gridSize = document.querySelector('input.grid-size');
 const grid = document.querySelector('.grid-container')
+const eraserBtn = document.querySelector('input.eraser');
+const penColorBtn = document.getElementById('color-button');
+const penColorSelect = document.querySelector('input.color');
+const rainbowBtn = document.querySelector('input.rainbow');
 let columns;
+let penColor;
+let colorSelect = penColorSelect.value;
+
+
+//pick random color
+function randomColor(){
+    h = Math.floor(Math.random() * 360);
+    color = `hsl(${h}, 100%, 50%)`;
+    return color;
+}
+
+//get color selection
+function getColor(){
+    colorSelect = penColorSelect.value;
+}
+
+//switch brushes
+function switchBrush(brush){
+    penColor = brush;
+}
 
 //paint one column
-function paint(column){
-    column.target.style.backgroundColor = `${penColor.value}`;
+function paint(e){
+    if (penColor == 'color') e.currentTarget.style.backgroundColor = `${colorSelect}`
+    else if (penColor == 'rainbow')  e.currentTarget.style.backgroundColor = `${randomColor()}`
+    else if (penColor == 'eraser')  e.currentTarget.style.backgroundColor = 'white';
+    //column.currentTarget.style.backgroundColor = `${penColor}`;
 };
 
 //switch between painting and non-painting
@@ -19,7 +45,7 @@ function isPainting(bool) {
 };
 
 
-//grid function and make initial grid
+//grid function
 function makeGrid(size) {
     //create grid divider and remove previous one
     const grid = document.createElement('div');
@@ -53,5 +79,31 @@ gridSize.addEventListener('input', function(e){
     document.querySelector('span.grid-size').textContent = e.currentTarget.value;
 });
 
-
+//initial grid
 makeGrid(gridSize.value);
+switchBrush('color');
+
+eraserBtn.addEventListener('click', function(e) {
+    if(this.checked) switchBrush('eraser');
+});
+rainbowBtn.addEventListener('click', function(e) {
+    if(this.checked) switchBrush('rainbow');
+});
+penColorSelect.addEventListener('change', function() {
+    if(penColorBtn.checked) {
+        switchBrush('color');
+        getColor();
+    }
+});
+
+/* function switchBrush(brush){
+    if (brush == 'rainbow'){
+        penColor = randomColor();
+    }
+    else if (brush == 'eraser'){
+        penColor = 'white';
+    }
+    else if (brush == 'color'){
+        getColor();
+    }
+}; */
