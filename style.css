@@ -1,14 +1,30 @@
 body {
     margin: 0px;
+    background-color: gray;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+header {
+    font-weight: 800;
+    font-size: 30px;
+    text-align: center;
+}
+
+div.options {
+    margin-right: 40px;
+    width: 270px;
+}
+
+input.grid-size {
+    accent-color: white;
 }
 
 div.container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background-color: gray;
 }
 
 div.grid {

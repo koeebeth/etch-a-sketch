@@ -1,5 +1,8 @@
 function makeGrid(size) {
-    const gridCont = document.querySelector('div.grid');
+    const grid = document.createElement('div');
+    grid.classList.add('grid');
+    const gridCont = document.querySelector('div.grid-container');
+    if (gridCont.firstChild) {gridCont.removeChild(gridCont.firstChild)};
 
     for(let i = 0; i < size; i++){
         let row = document.createElement('div');
@@ -7,10 +10,18 @@ function makeGrid(size) {
         for (let j = 0; j < size; j++){
             let column = document.createElement('div');
             column.classList.add('column');
+            column.addEventListener('mouseover', (e) => e.target.style.backgroundColor = 'lime');
             row.appendChild(column);
         }
-        gridCont.appendChild(row)
+        grid.appendChild(row)
     }
-}
+    gridCont.appendChild(grid);
+};
 
-makeGrid(8);
+
+let gridSize = document.querySelector('input.grid-size');
+gridSize.addEventListener('input', function(e){ 
+    makeGrid(e.currentTarget.value);
+    document.querySelector('span.grid-size').textContent = e.currentTarget.value;
+});
+makeGrid(gridSize.value);
