@@ -1,3 +1,7 @@
+penColor = document.querySelector('input.color');
+
+//grid function and make initial grid
+
 function makeGrid(size) {
     const grid = document.createElement('div');
     grid.classList.add('grid');
@@ -10,7 +14,8 @@ function makeGrid(size) {
         for (let j = 0; j < size; j++){
             let column = document.createElement('div');
             column.classList.add('column');
-            column.addEventListener('mouseover', (e) => e.target.style.backgroundColor = 'lime');
+            //change pen color
+            column.onmouseover = function() {column.style.backgroundColor = `${penColor.value}`};
             row.appendChild(column);
         }
         grid.appendChild(row)
@@ -18,10 +23,12 @@ function makeGrid(size) {
     gridCont.appendChild(grid);
 };
 
-
-let gridSize = document.querySelector('input.grid-size');
+//change grid size on slider
+const gridSize = document.querySelector('input.grid-size');
 gridSize.addEventListener('input', function(e){ 
     makeGrid(e.currentTarget.value);
     document.querySelector('span.grid-size').textContent = e.currentTarget.value;
 });
+
+
 makeGrid(gridSize.value);

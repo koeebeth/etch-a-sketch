@@ -32,16 +32,16 @@ div.grid {
     height: 650px;
     background-color: black;
     display: flex;
-    gap: 3px;
+    gap: 1px;
     flex-direction: column;
 }
 
 .row {
     display: flex;
-    gap: 3px;
+    gap: inherit;
     flex: 1;
 }
 .column {
-    background-color: rebeccapurple;
+    background-color: white;
     flex: 1;
 }
