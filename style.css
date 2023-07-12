@@ -44,4 +44,7 @@ div.grid {
 .column {
     background-color: white;
     flex: 1;
+    transition: 0.2s;
 }
+
+
