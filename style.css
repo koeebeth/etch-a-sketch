@@ -51,3 +51,7 @@ div.grid {
 .grid-off {
     border: 0px;
 }
+
+button {
+    font-family: inherit;
+}

@@ -4,8 +4,10 @@ const eraserBtn = document.querySelector('input.eraser');
 const penColorBtn = document.getElementById('color-button');
 const rainbowBtn = document.querySelector('input.rainbow');
 const gridBtn = document.getElementById('grid-toggle');
+const clearBtn = document.getElementById('clear-button');
 const penColorSelect = document.querySelector('input.color');
 const backgroundColorSelect = document.getElementById('background-color');
+
 let backgroundColor = backgroundColorSelect.value;
 let colorSelect = penColorSelect.value;
 let columns;
@@ -100,16 +102,17 @@ penColorBtn.addEventListener('click', function(e) {
     if (this.checked) switchBrush('color');
 })
 // brush color change
-penColorSelect.addEventListener('change', function() {
-        colorSelect = getColor(penColorSelect);
-});
+penColorSelect.addEventListener('change', () => colorSelect = getColor(penColorSelect));
 // grid toggle
 gridBtn.addEventListener('change', () => toggleGrid());
 
+// change background color
 backgroundColorSelect.addEventListener('input', function() {
     backgroundColor = getColor(backgroundColorSelect);
     columns.forEach((column) => column.style.backgroundColor = `${backgroundColor}`);
 });
+
+clearBtn.addEventListener('click', () => makeGrid(gridSize.value));
 
 
 //initial grid
