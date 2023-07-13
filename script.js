@@ -89,11 +89,11 @@ eraserBtn.addEventListener('click', function(e) {
 rainbowBtn.addEventListener('click', function(e) {
     if(this.checked) switchBrush('rainbow');
 });
+penColorBtn.addEventListener('click', function(e) {
+    if (this.checked) switchBrush('color');
+})
 penColorSelect.addEventListener('change', function() {
-    if(penColorBtn.checked) {
-        switchBrush('color');
         getColor();
-    }
 });
 
 /* function switchBrush(brush){
