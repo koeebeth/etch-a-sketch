@@ -18,13 +18,22 @@
         <div class="options">
             <h2>Settings</h2>
             <div class="grid-size">
-                <label for="grid-size">Grid Size <span class="grid-size"></span></label>
+                <label for="grid-size">Grid Size <span class="grid-size">16</span></label>
                 <input type="range" class="grid-size" name="grid-size" min="8" max="100" value="16" step="2">
             </div>
-            <br>
+            <div class="colors">
+                <div>
+                    <label for="pen-color">Pen Color</label>
+                    <input type="color" class="color" name="color" id="pen-color" value="#000000">
+                </div>
+                <div>
+                    <label for="background-color">Background Color</label>
+                    <input type="color" id="background-color" value="#FFFFFF">
+                </div>
+            </div>
             <div class="color-settings">
                 <input type="radio" name="brush" class="color-button" id="color-button" checked>
-                <label for="color-button">Color <input type="color" class="color" name="color" value="#000000"></label>
+                <label for="color-button">Color</label>
                 <br>
                 <input type="radio" name="brush" class="rainbow" id="rainbow-button">
                 <label for="rainbow-button">Rainbow</label>
@@ -36,12 +45,10 @@
                 <label for="eraser-button">Eraser</label>
             </div>
             <div class="grid-settings">
-                <input type="checkbox" id="grid-toggle">
+                <input type="checkbox" id="grid-toggle" checked>
                 <label for="grid-toggle">Grid</label>
             </div>
             <div class="background-settings">
-                <label for="background-color">Background color</label>
-                <input type="color" id="background-color" value="#FFFFFF">
                 <button type="button" id="clear-button">Clear</button>
             </div>
         </div>

@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    background-color: gray;
+    background-color: darkgray;
     font-family: 'IBM Plex Mono', monospace;
 }
 
@@ -8,15 +8,60 @@ header {
     font-weight: 800;
     font-size: 30px;
     text-align: center;
+    text-decoration: underline;
 }
 
 div.options {
     margin-right: 40px;
+    margin-top: 20px;
+    padding: 30px;
+    padding-bottom: 50px;
+    background-color:gainsboro;
+    border-radius: 10px;
     width: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
-input.grid-size {
-    accent-color: white;
+h2 {
+    margin: 0px;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+div.colors {
+    display: flex;
+    justify-content: space-between;
+}
+
+input.grid-size, 
+input[type='radio'],
+input[type='checkbox']
+{
+    accent-color: black;
+}
+
+input[type='color'] {
+    width: 100px;
+
+}
+
+input:hover, label:hover {
+    cursor: pointer;
+}
+
+div.grid-size {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+label[for='grid-size'] {
+    margin-right: 20px;
 }
 
 div.container {
@@ -28,12 +73,19 @@ div.container {
 }
 
 div.grid {
-    width: 650px;
-    height: 650px;
+    width: 600px;
+    height: 600px;
     background-color: black;
     display: flex;
     gap: 0px;
     flex-direction: column;
+}
+div.grid-container {
+    border: 20px solid white;
+    border-radius: 10px;
+    width: 600px;
+    height: 600px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 .row {
@@ -45,7 +97,7 @@ div.grid {
     background-color: white;
     flex: 1;
     transition: 0.2s;
-    border: 0.5px solid;
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
 }
 
 .grid-off {

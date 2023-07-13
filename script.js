@@ -130,10 +130,11 @@ backgroundColorSelect.addEventListener('input', function() {
 clearBtn.addEventListener('click', () => makeGrid(gridSize.value));
 
 
-//initial grid
+// create grid on load
+window.onload = () => {
 makeGrid(gridSize.value);
-switchBrush('darken');
-
+switchBrush('color');
+}
 
 // first switch brush function
 /* function switchBrush(brush){
