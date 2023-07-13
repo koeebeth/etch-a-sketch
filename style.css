@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    padding: 0px;
     background-color: darkgray;
     font-family: 'IBM Plex Mono', monospace;
 }
@@ -9,6 +10,13 @@ header {
     font-size: 30px;
     text-align: center;
     text-decoration: underline;
+}
+
+div.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100vw;
 }
 
 div.options {
@@ -64,13 +72,7 @@ label[for='grid-size'] {
     margin-right: 20px;
 }
 
-div.container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-}
+
 
 div.grid {
     width: 600px;
@@ -106,4 +108,25 @@ div.grid-container {
 
 button {
     font-family: inherit;
+}
+
+footer {
+    color: rgb(82, 82, 82);
+    text-align: center;
+    margin: 20px 0px;
+    height: 25px;
+}
+
+footer #text, a, img {
+    display: inline;
+    margin: 0px;
+}
+
+img {
+    height: 20px;
+    vertical-align:bottom;
+}
+
+a {
+    color: black;
 }

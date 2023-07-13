@@ -96,7 +96,8 @@ function makeGrid(size) {
     grid.onmouseup = function() {isPainting(false)}
 };
 
-//  EVENT LISTENERS
+///// EVENT LISTENERS /////
+
 // grid size
 gridSize.addEventListener('input', function(e){ 
     makeGrid(e.currentTarget.value);
