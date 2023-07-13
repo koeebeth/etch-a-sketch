@@ -4,6 +4,7 @@ const eraserBtn = document.querySelector('input.eraser');
 const penColorBtn = document.getElementById('color-button');
 const penColorSelect = document.querySelector('input.color');
 const rainbowBtn = document.querySelector('input.rainbow');
+const gridBtn = document.getElementById('grid-toggle');
 let columns;
 let penColor;
 let colorSelect = penColorSelect.value;
@@ -16,7 +17,7 @@ function randomColor(){
     return color;
 }
 
-//get color selection
+//get color selected by user
 function getColor(){
     colorSelect = penColorSelect.value;
 }
@@ -24,6 +25,11 @@ function getColor(){
 //switch brushes
 function switchBrush(brush){
     penColor = brush;
+}
+
+//toggle grid on-off
+function toggleGrid(){
+    columns.forEach((column) => column.classList.toggle('grid-off'));
 }
 
 //paint one column
@@ -73,29 +79,38 @@ function makeGrid(size) {
     grid.onmouseup = function() {isPainting(false)}
 };
 
-//change grid size on slider
+//  EVENT LISTENERS
+// grid size
 gridSize.addEventListener('input', function(e){ 
     makeGrid(e.currentTarget.value);
     document.querySelector('span.grid-size').textContent = e.currentTarget.value;
 });
+// eraser tool
+eraserBtn.addEventListener('click', function(e) {
+    if(this.checked) switchBrush('eraser');
+});
+// rainbow brush
+rainbowBtn.addEventListener('click', function(e) {
+    if(this.checked) switchBrush('rainbow');
+});
+// color brush
+penColorBtn.addEventListener('click', function(e) {
+    if (this.checked) switchBrush('color');
+})
+// brush color change
+penColorSelect.addEventListener('change', function() {
+        getColor();
+});
+// grid toggle
+gridBtn.addEventListener('change', () => toggleGrid());
+
 
 //initial grid
 makeGrid(gridSize.value);
 switchBrush('color');
 
-eraserBtn.addEventListener('click', function(e) {
-    if(this.checked) switchBrush('eraser');
-});
-rainbowBtn.addEventListener('click', function(e) {
-    if(this.checked) switchBrush('rainbow');
-});
-penColorBtn.addEventListener('click', function(e) {
-    if (this.checked) switchBrush('color');
-})
-penColorSelect.addEventListener('change', function() {
-        getColor();
-});
 
+// first switch brush function
 /* function switchBrush(brush){
     if (brush == 'rainbow'){
         penColor = randomColor();

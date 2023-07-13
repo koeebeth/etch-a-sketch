@@ -32,7 +32,7 @@ div.grid {
     height: 650px;
     background-color: black;
     display: flex;
-    gap: 1px;
+    gap: 0px;
     flex-direction: column;
 }
 
@@ -45,6 +45,9 @@ div.grid {
     background-color: white;
     flex: 1;
     transition: 0.2s;
+    border: 0.5px solid;
 }
 
-
+.grid-off {
+    border: 0px;
+}
