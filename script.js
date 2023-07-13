@@ -2,13 +2,14 @@ const gridSize = document.querySelector('input.grid-size');
 const grid = document.querySelector('.grid-container')
 const eraserBtn = document.querySelector('input.eraser');
 const penColorBtn = document.getElementById('color-button');
-const penColorSelect = document.querySelector('input.color');
 const rainbowBtn = document.querySelector('input.rainbow');
 const gridBtn = document.getElementById('grid-toggle');
-let columns;
-let penColor;
+const penColorSelect = document.querySelector('input.color');
+const backgroundColorSelect = document.getElementById('background-color');
+let backgroundColor = backgroundColorSelect.value;
 let colorSelect = penColorSelect.value;
-
+let columns;
+let brushType;
 
 //pick random color
 function randomColor(){
@@ -18,13 +19,13 @@ function randomColor(){
 }
 
 //get color selected by user
-function getColor(){
-    colorSelect = penColorSelect.value;
+function getColor(inpt){
+    return inpt.value;
 }
 
 //switch brushes
 function switchBrush(brush){
-    penColor = brush;
+    brushType = brush;
 }
 
 //toggle grid on-off
@@ -34,9 +35,9 @@ function toggleGrid(){
 
 //paint one column
 function paint(e){
-    if (penColor == 'color') e.currentTarget.style.backgroundColor = `${colorSelect}`
-    else if (penColor == 'rainbow')  e.currentTarget.style.backgroundColor = `${randomColor()}`
-    else if (penColor == 'eraser')  e.currentTarget.style.backgroundColor = 'white';
+    if (brushType == 'color') e.currentTarget.style.backgroundColor = `${colorSelect}`
+    else if (brushType == 'rainbow')  e.currentTarget.style.backgroundColor = `${randomColor()}`
+    else if (brushType == 'eraser')  e.currentTarget.style.backgroundColor = `${backgroundColor}`;
     //column.currentTarget.style.backgroundColor = `${penColor}`;
 };
 
@@ -66,6 +67,7 @@ function makeGrid(size) {
         for (let j = 0; j < size; j++){
             let column = document.createElement('div');
             column.classList.add('column');
+            column.style.backgroundColor = `${backgroundColor}`;
             //change pen color
             //column.onmouseover = function() {column.style.backgroundColor = `${penColor.value}`};
             row.appendChild(column);
@@ -99,10 +101,15 @@ penColorBtn.addEventListener('click', function(e) {
 })
 // brush color change
 penColorSelect.addEventListener('change', function() {
-        getColor();
+        colorSelect = getColor(penColorSelect);
 });
 // grid toggle
 gridBtn.addEventListener('change', () => toggleGrid());
+
+backgroundColorSelect.addEventListener('input', function() {
+    backgroundColor = getColor(backgroundColorSelect);
+    columns.forEach((column) => column.style.backgroundColor = `${backgroundColor}`);
+});
 
 
 //initial grid
