@@ -3,6 +3,7 @@ const grid = document.querySelector('.grid-container')
 const eraserBtn = document.querySelector('input.eraser');
 const penColorBtn = document.getElementById('color-button');
 const rainbowBtn = document.querySelector('input.rainbow');
+const darkenBtn = document.getElementById('darken-button');
 const gridBtn = document.getElementById('grid-toggle');
 const clearBtn = document.getElementById('clear-button');
 const penColorSelect = document.querySelector('input.color');
@@ -13,6 +14,10 @@ let colorSelect = penColorSelect.value;
 let columns;
 let brushType;
 
+
+function getRGB(rgb) {
+    return rgb.substr(4).split(')')[0].split(',');
+}
 //pick random color
 function randomColor(){
     h = Math.floor(Math.random() * 360);
@@ -40,6 +45,14 @@ function paint(e){
     if (brushType == 'color') e.currentTarget.style.backgroundColor = `${colorSelect}`
     else if (brushType == 'rainbow')  e.currentTarget.style.backgroundColor = `${randomColor()}`
     else if (brushType == 'eraser')  e.currentTarget.style.backgroundColor = `${backgroundColor}`;
+    else if (brushType == 'darken') {
+        curcolor = e.currentTarget.style.backgroundColor;
+        rgb = getRGB(curcolor);
+        r = Math.floor(parseInt(rgb[0]) * 9 / 10);
+        g = Math.floor(parseInt(rgb[1]) * 9 / 10);
+        b = Math.floor(parseInt(rgb[2]) * 9 / 10);
+        e.currentTarget.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
     //column.currentTarget.style.backgroundColor = `${penColor}`;
 };
 
@@ -101,6 +114,8 @@ rainbowBtn.addEventListener('click', function(e) {
 penColorBtn.addEventListener('click', function(e) {
     if (this.checked) switchBrush('color');
 })
+// darken brush
+darkenBtn.addEventListener('click', () => switchBrush('darken'));
 // brush color change
 penColorSelect.addEventListener('change', () => colorSelect = getColor(penColorSelect));
 // grid toggle
@@ -117,7 +132,7 @@ clearBtn.addEventListener('click', () => makeGrid(gridSize.value));
 
 //initial grid
 makeGrid(gridSize.value);
-switchBrush('color');
+switchBrush('darken');
 
 
 // first switch brush function
