@@ -7,19 +7,7 @@ A retro Etch-a-Sketch drawing app created for the assignment of **[The Odin Proj
 
 **Live preview [here](https://koeebeth.github.io/etch-a-sketch/)**
 
-### Features
-- Paint only when pressed
-- Change brush color
-- Change background color
-- Rainbow brush with random colors
-- Darken brush for darkening painted spots
-- Changing grid size and hiding grid
-
 ### Tools
 - Vanilla JS
 - CSS
 - HTML
-
-### Learned
-- Working with event listeners
-- Generating elements with JavaScript loops
